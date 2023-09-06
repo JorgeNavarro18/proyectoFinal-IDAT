@@ -23,9 +23,7 @@ export const App = () => {
         <Route path="/photos" element={<PhotosPage/>} />
         <Route path="/todos" element={<TodosPage/>} />
         <Route path="/users" element={<UsersPage/>} />
-        
-  
-        
+          
       </Routes>
     );
 }
