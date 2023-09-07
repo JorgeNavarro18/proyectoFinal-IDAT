@@ -19,14 +19,25 @@ export const UsersPage = () => {
         <button onClick={handleClick2}> Ver Users</button>
         <Link to="/">Ir a Home</Link>
 
-              {users.map ((user)=>(
+        {users.map ((user)=>(
               <p key={user.id}> 
               <div>
+                  <div>
                   Nombres: {user.name}
+                  </div>
+
+                  <div>
                   Nombre de Usuario : {user.username}
+                  </div>
+
+                  <div>
                   Correo: {user.email}
-                  Dirección: {user.address}
+                  </div>
+
+                  <div>
                   Teléfono: {user.phone}
+                  </div>
+
               </div>
               </p>
               )) }
