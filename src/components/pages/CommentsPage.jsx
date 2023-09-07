@@ -1,16 +1,34 @@
 //import React from 'react'
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
+import { useFetch } from '../../hooks/useFetch';
 
 export const CommentsPage = () => {
 
-  const[ comments, setComments] = useState ([]);
-  const handleClick2 = async () =>{
+  const { error, isLoading } = useFetch(
+		'https://jsonplaceholder.typicode.com/comments'
+	);
+    const[comments, setComments] = useState ([]);
+    const handleClick2 = async () =>{
+  
+      const request = await fetch ('https://jsonplaceholder.typicode.com/comments');
+      const response = await request.json();
+      setComments(response);
+    }
 
-    const request = await fetch ('https://jsonplaceholder.typicode.com/comments');
-    const response = await request.json();
-    setComments(response);
-  }
+	if (isLoading) {
+		return (
+			<div>
+				<p>Cargando...</p>
+			</div>
+		);
+	}
+
+	if (error) {
+		<div>
+			<p>Ocurrió un error {JSON.stringify(error)}</p>
+		</div>;
+	}
 
   return (
     <div>

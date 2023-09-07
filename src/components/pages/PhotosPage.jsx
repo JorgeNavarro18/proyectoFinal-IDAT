@@ -1,14 +1,33 @@
 import {useState} from 'react'
 import {Link} from 'react-router-dom';
+import { useFetch } from '../../hooks/useFetch';
 
 export const PhotosPage = () => {
 
-  const[ photo, setPhoto] = useState ([]);
-  const handleClick2 = async () =>{
-    const request = await fetch ('https://jsonplaceholder.typicode.com/photos');
-    const response = await request.json();
-    setPhoto(response);
-  }
+  const {  error, isLoading } = useFetch(
+		'https://jsonplaceholder.typicode.com/photos'
+	);
+    const[photos, setPhotos] = useState ([]);
+    const handleClick2 = async () =>{
+  
+      const request = await fetch ('https://jsonplaceholder.typicode.com/photos');
+      const response = await request.json();
+      setPhotos(response);
+    }
+
+	if (isLoading) {
+		return (
+			<div>
+				<p>Cargando...</p>
+			</div>
+		);
+	}
+
+	if (error) {
+		<div>
+			<p>Ocurrió un error {JSON.stringify(error)}</p>
+		</div>;
+	}
 
   return (
     <div>
@@ -21,7 +40,7 @@ export const PhotosPage = () => {
 
         <div>
           <ul>
-            {photo.map((photo) => (
+            {photos.map((photo) => (
               <li key={photo.id}>
                 <img src={photo.thumbnailUrl} alt={photo.title}/>
                 <p>{photo.title}</p>
