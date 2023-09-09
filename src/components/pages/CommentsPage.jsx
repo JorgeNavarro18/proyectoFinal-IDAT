@@ -1,20 +1,22 @@
 //import React from 'react'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
+import axios from 'axios';
+
 
 export const CommentsPage = () => {
-
   const { error, isLoading } = useFetch(
 		'https://jsonplaceholder.typicode.com/comments'
 	);
-    const[comments, setComments] = useState ([]);
-    const handleClick2 = async () =>{
-  
-      const request = await fetch ('https://jsonplaceholder.typicode.com/comments');
-      const response = await request.json();
-      setComments(response);
-    }
+  const [comments, setComments] = useState([]);
+  useEffect(() => {
+      const fetchAlbums = async () => {
+        const {data} = await axios.get('https://jsonplaceholder.typicode.com/comments');
+        setComments(data);
+      }
+      fetchAlbums();
+  }, []);
 
 	if (isLoading) {
 		return (
@@ -30,6 +32,7 @@ export const CommentsPage = () => {
 		</div>;
 	}
 
+
   return (
     <div>
     
@@ -37,16 +40,14 @@ export const CommentsPage = () => {
         <h1> Comments</h1>
         </div>
 
-        <button onClick={handleClick2}>   Ver Comments</button>
-
         <Link to="/">Ir a Home</Link>
 
-        {comments.map ((post)=>(
-                <p key={post.id}> 
+        {comments.map ((comment)=>(
+                <p key={comment.id}> 
                 <div>
-                TITULO: {post.title} 
+                TITULO: {comment.title} 
                 </div>
-                CUERPO: {post.body}
+                CUERPO: {comment.body}
                 </p>    
               )) }
     

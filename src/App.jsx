@@ -1,6 +1,7 @@
 //import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route,Routes} from 'react-router-dom';
-import {Home} from './components/pages/HomePage';
+import {Home} from './components/pages/home/HomePage';
 import {PostsPage} from './components/pages/PostsPage';
 import {CommentsPage} from './components/pages/CommentsPage';
 import {AlbumsPage} from './components/pages/AlbumsPage';
@@ -16,7 +17,7 @@ export const App = () => {
   
     return (
      <>
-          <NavBar />
+          <NavBar /> 
             <div className='pages'>
               <Routes>
                     <Route path="/" element={<Home />} />

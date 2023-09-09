@@ -1,19 +1,21 @@
 //import React from 'react'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
+import axios from 'axios';
 
 export const AlbumsPage = () => {
-    const { error, isLoading } = useFetch(
+  const { error, isLoading } = useFetch(
 		'https://jsonplaceholder.typicode.com/albums'
 	);
-    const[albums, setAlbums] = useState ([]);
-    const handleClick2 = async () =>{
-  
-      const request = await fetch ('https://jsonplaceholder.typicode.com/albums');
-      const response = await request.json();
-      setAlbums(response);
-    }
+  const [albums, setAlbums] = useState([]);
+  useEffect(() => {
+      const fetchAlbums = async () => {
+        const {data} = await axios.get('https://jsonplaceholder.typicode.com/albums');
+        setAlbums(data);
+      }
+      fetchAlbums();
+  }, []);
 
 	if (isLoading) {
 		return (
@@ -33,7 +35,7 @@ export const AlbumsPage = () => {
         <div>  
         <h1> Albums</h1>
         </div>
-        <button onClick={handleClick2}> Ver Albums</button>
+        
         <Link to="/">Ir a Home</Link>
 
         {albums.map ((album)=>(

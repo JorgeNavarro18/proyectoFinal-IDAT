@@ -1,29 +1,46 @@
 //import React from 'react'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import { useFetch } from '../../hooks/useFetch';
+import axios from 'axios';
 
 export const PostsPage = () => {
 
-  const[ post, setPost] = useState ([]);
-  const handleClick2 = async () =>{
+  const { error, isLoading } = useFetch(
+		'https://jsonplaceholder.typicode.com/posts'
+	);
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+      const fetchPosts = async () => {
+        const {data} = await axios.get('https://jsonplaceholder.typicode.com/posts');
+        setPosts(data);
+      }
+      fetchPosts();
+  }, []);
 
-    const request = await fetch ('https://jsonplaceholder.typicode.com/posts');
-    const response = await request.json();
-    setPost(response);
-  }
+	if (isLoading) {
+		return (
+			<div>
+				<p>Cargando...</p>
+			</div>
+		);
+	}
 
+	if (error) {
+		<div>
+			<p>Ocurrió un error {JSON.stringify(error)}</p>
+		</div>;
+	}
   return (
     <div>
 
         <div>  
         <h1> Posts</h1>
-        </div>
-        <button onClick={handleClick2}> Ver Posts</button>
-        <div>
+       
         <Link to="/">Ir a Home</Link>
         </div>
 
-        {post.map ((post)=>(
+        {posts.map ((post)=>(
                 <p key={post.id}> 
                 <div>
                 TITULO: {post.title} 

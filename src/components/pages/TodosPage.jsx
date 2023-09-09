@@ -1,4 +1,4 @@
-import React from 'react'
+//import React from 'react'
 import {Link} from 'react-router-dom';
 
 export const TodosPage = () => {
@@ -9,7 +9,7 @@ export const TodosPage = () => {
     <h1> Todos</h1>
     </div>
 
-    <Link to="/">Ir a Home</Link>
+    <Link to="/">Ir a Home</Link> | | 
     </div>
   )
 }

@@ -1,8 +1,12 @@
 //import React from 'react'
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
+import { useFetch } from '../../hooks/useFetch';
 
 export const UsersPage = () => {
+  const { error, isLoading } = useFetch(
+		'https://jsonplaceholder.typicode.com/users'
+	);
   const[ users, setUser] = useState ([]);
   const handleClick2 = async () =>{
 
@@ -10,6 +14,19 @@ export const UsersPage = () => {
     const response = await request.json();
     setUser(response);
   }
+  if (isLoading) {
+		return (
+			<div>
+				<p>Cargando...</p>
+			</div>
+		);
+	}
+
+	if (error) {
+		<div>
+			<p>Ocurrió un error {JSON.stringify(error)}</p>
+		</div>;
+	}
 
   return (
     <div>

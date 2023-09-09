@@ -1,19 +1,21 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
+import axios from 'axios';
 
 export const PhotosPage = () => {
 
-  const {  error, isLoading } = useFetch(
+  const { error, isLoading } = useFetch(
 		'https://jsonplaceholder.typicode.com/photos'
 	);
-    const[photos, setPhotos] = useState ([]);
-    const handleClick2 = async () =>{
-  
-      const request = await fetch ('https://jsonplaceholder.typicode.com/photos');
-      const response = await request.json();
-      setPhotos(response);
-    }
+  const [photos, setPhotos] = useState([]);
+  useEffect(() => {
+      const fetchPhotos = async () => {
+        const {data} = await axios.get('https://jsonplaceholder.typicode.com/photos');
+        setPhotos(data);
+      }
+      fetchPhotos();
+  }, []);
 
 	if (isLoading) {
 		return (
@@ -28,14 +30,13 @@ export const PhotosPage = () => {
 			<p>Ocurrió un error {JSON.stringify(error)}</p>
 		</div>;
 	}
-
   return (
     <div>
 
       <div>  
         <h1> Photos </h1>
         </div>
-        <button onClick={handleClick2}> Ver Photos</button>
+     
         <Link to="/">Ir a Home</Link>
 
         <div>
