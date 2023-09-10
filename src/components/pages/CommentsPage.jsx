@@ -45,9 +45,12 @@ export const CommentsPage = () => {
         {comments.map ((comment)=>(
                 <p key={comment.id}> 
                 <div>
-                TITULO: {comment.title} 
+                Nombre: {comment.name} 
                 </div>
-                CUERPO: {comment.body}
+                Correo: {comment.email}
+                <div>
+                Comments: {comment.body}
+                </div>
                 </p>    
               )) }
     
