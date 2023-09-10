@@ -8,19 +8,17 @@ import {AlbumsPage} from './components/pages/AlbumsPage';
 import {PhotosPage} from './components/pages/PhotosPage';
 import {TodosPage} from './components/pages/TodosPage';
 import {UsersPage} from './components/pages/UsersPage';
-import {NavBar} from "./components/NavBar";
-import "./App.css";
-
-//import './PostsPage.css';
+import {NavBar} from './components/NavBar';
+import './App.css';
 
 export const App = () => {
   
     return (
      <>
-          <NavBar /> 
+            <NavBar /> 
             <div className='pages'>
               <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Home/>} />
                     <Route path="/posts" element={<PostsPage/>} />
                     <Route path="/comments" element={<CommentsPage/>} />
                     <Route path="/albums" element={<AlbumsPage/>} />
@@ -29,6 +27,7 @@ export const App = () => {
                     <Route path="/users" element={<UsersPage/>} />
               </Routes>
             </div>
+            
      </>
     );
 }

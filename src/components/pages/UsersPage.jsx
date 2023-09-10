@@ -33,7 +33,7 @@ export const UsersPage = () => {
         <div>  
         <h1> Users</h1>
         </div>
-        <button onClick={handleClick2}> Ver Users</button>
+        <button className='btn btn-outline-success' onClick={handleClick2}> Ver Users</button>
         <Link to="/">Ir a Home</Link>
 
         {users.map ((user)=>(
