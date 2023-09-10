@@ -1,19 +1,21 @@
 //import React from 'react'
-//import {Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { SectionContact } from '../home/SectionContact';
 import { Footer } from '../home/Footer';
 import { Main } from '../home/Main';
+import imgFrontMan from '../home/img/front-main.jpg';
+import { SectionProyects } from '../home/SectionProyects';
 
 export const Home = () => {
   return (
    
     <>  
-       <Main />
+       <Main frontMan={imgFrontMan} />
+       <SectionProyects />
        <SectionContact />
        <Footer />
     </>
     
   )
-}
+};
 

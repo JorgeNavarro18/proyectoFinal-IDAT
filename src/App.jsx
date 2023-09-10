@@ -18,7 +18,7 @@ export const App = () => {
             <NavBar /> 
             <div className='pages'>
               <Routes>
-                    <Route path="/" element={<Home/>} />
+                    <Route path="/" element={<Home />} />
                     <Route path="/posts" element={<PostsPage/>} />
                     <Route path="/comments" element={<CommentsPage/>} />
                     <Route path="/albums" element={<AlbumsPage/>} />
@@ -27,7 +27,6 @@ export const App = () => {
                     <Route path="/users" element={<UsersPage/>} />
               </Routes>
             </div>
-            
      </>
     );
 }
