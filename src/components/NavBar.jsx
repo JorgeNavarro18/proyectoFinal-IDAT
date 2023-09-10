@@ -82,6 +82,17 @@ export const NavBar = () =>  {
                 Posts
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="/todos"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                Todos
+              </NavLink>
+            </li>
           </ul>
           <div className="nav-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
