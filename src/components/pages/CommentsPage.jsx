@@ -36,9 +36,9 @@ export const CommentsPage = () => {
 
 
   return (
-    <div className='card_comments'>
+    <div className='card_comm'>
         {comments.map ((comment)=>(
-            <Card key={comment.id} 
+            <Card className='card_comments' key={comment.id} 
               style={{ width: '18rem' }}>
               <Card.Img variant="top" src={img} />
               <Card.Body>

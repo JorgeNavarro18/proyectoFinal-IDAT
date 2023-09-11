@@ -32,20 +32,19 @@ export const AlbumsPage = () => {
 		</div>;
 	}
   return (
-    <div className='card_albums'>
+    <div className='card_al'>
 
         {albums.map((album) => (
-        <Card
+        <Card className='card_albums'
           key={album.id}
           style={{ width: '18rem' }}
-          className="mb-2"
         >
           <Card.Header>Albums Song</Card.Header>
           <Card.Body>
             <Card.Title>{album.title}</Card.Title>
             <Card.Text>
               Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              bulk of the card is content.
             </Card.Text>
           </Card.Body>
         </Card>

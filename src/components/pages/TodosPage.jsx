@@ -1,8 +1,9 @@
 //import React from 'react'
 import {useState, useEffect} from 'react';
-//import {Link} from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
 import axios from 'axios';
+import Card from 'react-bootstrap/Card';
+import imgTodo from '../../assets/images/fondo.jfif';
 
 export const TodosPage = () => {
 
@@ -33,18 +34,19 @@ export const TodosPage = () => {
 	}
 
   return (
-    <div>
-      <div>  
-      <h1> Todos</h1>
-      </div>
-      {todos.map ((todo)=>(
-                <p key={todos.id}> 
-                <div>
-                TITULO: {todo.title} 
-                </div>
-                {todo.completed}
-                </p>    
-              )) }
+    <div className='card_to'>
+      {todos.map((todo) => (
+        <Card className="card_todos bg-dark text-white" key={todos.id}>
+        <Card.Img src={imgTodo} alt="Card image" />
+        <Card.ImgOverlay>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+             {todo.title} 
+          </Card.Text>
+          <Card.Text>Last updated 3 mins ago</Card.Text>
+        </Card.ImgOverlay>
+      </Card>
+      )) }
     </div>
   )
 }

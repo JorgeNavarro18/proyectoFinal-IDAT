@@ -1,8 +1,9 @@
 //import React from 'react'
 import {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
 import axios from 'axios';
+import Card from 'react-bootstrap/Card';
+import './PostsPage.css';
 
 export const PostsPage = () => {
 
@@ -32,22 +33,22 @@ export const PostsPage = () => {
 		</div>;
 	}
   return (
-    <div>
-
-        <div>  
-        <h1> Posts</h1>
+    <div className='card_po'>
+       {posts.map((post) => (
+        <Card className='card_posts'
+          key={post.id}
+          style={{ width: '18rem' }}
+        >
+          <Card.Header>Posts User</Card.Header>
+          <Card.Body>
+            <Card.Title>{post.title}</Card.Title>
+            <Card.Text>
+                {post.body}
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      ))}
        
-        <Link to="/">Ir a Home</Link>
-        </div>
-
-        {posts.map ((post)=>(
-                <p key={post.id}> 
-                <div>
-                TITULO: {post.title} 
-                </div>
-                CUERPO: {post.body}
-                </p>
-              )) }
    
     </div>
   )

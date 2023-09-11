@@ -1,7 +1,24 @@
+.card_comm{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px;
+}
 .card_comments{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 10px;
-    text-align: center;
+    background: #fff;
+    box-shadow: 0px 1px 10px rgb(0, 0, 0, 0.2);
+    cursor: default;
+    transition: all 400ms ease;
+}
+.card_comments:hover{
+    box-shadow: 5px 5px 20px rgb(0, 0, 0, 0.4);
+    transform: translateY(-3%);
+}
+.card_comments Img{
+    width: 100%;
+    height: 220px;
 }

@@ -34,12 +34,12 @@ export const PhotosPage = () => {
 		</div>;
 	}
   return (
-    <div className='card_photos'>
+    <div className='card_ph'>
     
       <Row xs={2} md={4} className="g-4">
       {photos.map((photo) => (
         <Col key={photo.id}>
-          <Card>
+          <Card className='card_photos'>
             <Card.Img variant="top" src={photo.thumbnailUrl} alt={photo.title} />
             <Card.Body>
               <Card.Title>{photo.title}</Card.Title>

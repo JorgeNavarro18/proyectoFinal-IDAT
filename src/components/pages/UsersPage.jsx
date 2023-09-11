@@ -1,19 +1,25 @@
 //import React from 'react'
-import {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {useState, useEffect} from 'react';
 import { useFetch } from '../../hooks/useFetch';
+import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import './UsersPage.css';
+import imgUser from '../../assets/images/usuario-2.png';
+import './TodosPage.css';
 
 export const UsersPage = () => {
   const { error, isLoading } = useFetch(
 		'https://jsonplaceholder.typicode.com/users'
 	);
-  const[ users, setUser] = useState ([]);
-  const handleClick2 = async () =>{
-
-    const request = await fetch ('https://jsonplaceholder.typicode.com/users');
-    const response = await request.json();
-    setUser(response);
-  }
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+      const fetchUsers = async () => {
+        const {data} = await axios.get('https://jsonplaceholder.typicode.com/users');
+        setUsers(data);
+      }
+      fetchUsers();
+  }, []);
   if (isLoading) {
 		return (
 			<div>
@@ -29,35 +35,24 @@ export const UsersPage = () => {
 	}
 
   return (
-    <div>
-        <div>  
-        <h1> Users</h1>
-        </div>
-        <button className='btn btn-outline-success' onClick={handleClick2}> Ver Users</button>
-        <Link to="/">Ir a Home</Link>
-
+    <div className='card_us'>
         {users.map ((user)=>(
-              <p key={user.id}> 
-              <div>
-                  <div>
-                  Nombres: {user.name}
-                  </div>
-
-                  <div>
-                  Nombre de Usuario : {user.username}
-                  </div>
-
-                  <div>
-                  Correo: {user.email}
-                  </div>
-
-                  <div>
-                  Teléfono: {user.phone}
-                  </div>
-
-              </div>
-              </p>
-              )) }
+            <Card className='card_users' key={user.id} 
+              style={{ width: '18rem' }}>
+              <Card.Img variant="top" src={imgUser} />
+              <Card.Body>
+                <Card.Title>{user.name} </Card.Title>
+                <Card.Text>
+                    {user.username}
+                </Card.Text>
+                <Card.Text>
+                     {user.email} 
+                </Card.Text>
+                <Button variant="primary">New Comment</Button>
+              </Card.Body>
+            </Card>
+        )) }
+       
         
     </div>
   )
