@@ -1,13 +1,13 @@
 //import React from "react";
-import {CardProyects}  from "../home/CardProyects";
-import proyect1 from "../home/proyects/1.jpg";
-import proyect2 from "../home/proyects/2.jpg";
-import proyect3 from "../home/proyects/3.jpg";
-import proyect4 from "../home/proyects/4.jpg";
-import proyect5 from "../home/proyects/5.jpg";
-import proyect6 from "../home/proyects/6.jpg";
-import proyect7 from "../home/proyects/7.jpg";
-import proyect8 from "../home/proyects/8.jpg";
+import {CardProyects}  from '../home/CardProyects';
+import proyect1 from '../../../assets/proyects/1.jpg';
+import proyect2 from '../../../assets/proyects/2.jpg';
+import proyect3 from '../../../assets/proyects/3.jpg';
+import proyect4 from '../../../assets/proyects/4.jpg';
+import proyect5 from '../../../assets/proyects/5.jpg';
+import proyect6 from '../../../assets/proyects/6.jpg';
+import proyect7 from '../../../assets/proyects/7.jpg';
+import proyect8 from '../../../assets/proyects/8.jpg';
 
 export const SectionProyects = () => {
   return (

@@ -1,5 +1,8 @@
 import {useEffect, useState} from 'react'
-import {Link} from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import "./PhotosPage.css";
 import { useFetch } from '../../hooks/useFetch';
 import axios from 'axios';
 
@@ -31,26 +34,26 @@ export const PhotosPage = () => {
 		</div>;
 	}
   return (
-    <div>
+    <div className='card_photos'>
+    
+      <Row xs={2} md={4} className="g-4">
+      {photos.map((photo) => (
+        <Col key={photo.id}>
+          <Card>
+            <Card.Img variant="top" src={photo.thumbnailUrl} alt={photo.title} />
+            <Card.Body>
+              <Card.Title>{photo.title}</Card.Title>
+              <Card.Text>
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
 
-      <div>  
-        <h1> Photos </h1>
-        </div>
-     
-        <Link to="/">Ir a Home</Link>
-
-        <div>
-          <ul>
-            {photos.map((photo) => (
-              <li key={photo.id}>
-                <img src={photo.thumbnailUrl} alt={photo.title}/>
-                <p>{photo.title}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
     </div>
-
-
   )
 }

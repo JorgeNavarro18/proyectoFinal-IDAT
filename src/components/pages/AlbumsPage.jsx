@@ -1,6 +1,7 @@
 //import React from 'react'
 import {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
+import './AlbumsPage.css';
 import { useFetch } from '../../hooks/useFetch';
 import axios from 'axios';
 
@@ -31,20 +32,24 @@ export const AlbumsPage = () => {
 		</div>;
 	}
   return (
-    <div>
-        <div>  
-        <h1> Albums</h1>
-        </div>
-        
-        <Link to="/">Ir a Home</Link>
+    <div className='card_albums'>
 
-        {albums.map ((album)=>(
-                <p key={album.id}> 
-                <div>
-                TITULO: {album.title} 
-                </div>
-                </p>
-              )) }
+        {albums.map((album) => (
+        <Card
+          key={album.id}
+          style={{ width: '18rem' }}
+          className="mb-2"
+        >
+          <Card.Header>Albums Song</Card.Header>
+          <Card.Body>
+            <Card.Title>{album.title}</Card.Title>
+            <Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      ))}
 
     </div>
   )

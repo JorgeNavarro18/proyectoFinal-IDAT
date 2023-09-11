@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { SectionContact } from '../home/SectionContact';
 import { Footer } from '../home/Footer';
 import { Main } from '../home/Main';
-import imgFrontMan from '../home/img/front-main.jpg';
+import imgFrontMan from '../../../assets/img/front-main.jpg';
 import { SectionProyects } from '../home/SectionProyects';
 
 export const Home = () => {

@@ -1,9 +1,11 @@
 //import React from 'react'
 import {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { useFetch } from '../../hooks/useFetch';
 import axios from 'axios';
-
+import img from '../../assets/images/usuario.png';
+import './CommentsPage.css';
 
 export const CommentsPage = () => {
   const { error, isLoading } = useFetch(
@@ -34,26 +36,23 @@ export const CommentsPage = () => {
 
 
   return (
-    <div>
-    
-        <div>  
-        <h1> Comments</h1>
-        </div>
-
-        <Link to="/">Ir a Home</Link>
-
+    <div className='card_comments'>
         {comments.map ((comment)=>(
-                <p key={comment.id}> 
-                <div>
-                Nombre: {comment.name} 
-                </div>
-                Correo: {comment.email}
-                <div>
-                Comments: {comment.body}
-                </div>
-                </p>    
-              )) }
-    
+            <Card key={comment.id} 
+              style={{ width: '18rem' }}>
+              <Card.Img variant="top" src={img} />
+              <Card.Body>
+                <Card.Title>{comment.name} </Card.Title>
+                <Card.Text>
+                    {comment.body}
+                </Card.Text>
+                <Card.Text>
+                   {comment.email} 
+                </Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
+        )) }
     </div>
   )
 }
